@@ -1,3 +1,5 @@
+package com.company;
+
 import opennlp.tools.stemmer.PorterStemmer;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -46,7 +48,7 @@ public class Engine {
                             wordIndex++;
                         }
                         else{
-                            words.setHash(wordID.get(stem));
+                           words.setHash(wordID.get(stem));
                         }
 
                     }
@@ -71,8 +73,8 @@ public class Engine {
         HashMap<Integer,HashMap<Integer,ArrayList<Integer>>> invertedIndex=new HashMap<>();
         HashMap<Integer,ArrayList<Integer>> docMap=new HashMap<>();
         ArrayList<Integer> docID;//Initialise and Declare an ArrayList
-        for(Map.Entry<Integer,HashMap<Integer,ArrayList<Integer>>> entry:forwardIndex.entrySet()){//First for Loop to iterate in forward Index
-            for(Map.Entry<Integer, ArrayList<Integer>> wordMap:entry.getValue().entrySet()) {//Second for Loop to iterate in wordList HashMap
+            for(Map.Entry<Integer,HashMap<Integer,ArrayList<Integer>>> entry:forwardIndex.entrySet()){//First for Loop to iterate in forward Index
+                for(Map.Entry<Integer, ArrayList<Integer>> wordMap:entry.getValue().entrySet()) {//Second for Loop to iterate in wordList HashMap
                 if (invertedIndex.containsKey(wordMap.getKey())) {//Checks if invertedIndex contains the word, if it does then it'll simply add the document's name
                     docMap = invertedIndex.get(wordMap.getKey());
                     docMap.put(entry.getKey(),wordMap.getValue());//Adds the new document name to the word's list of doc's
@@ -85,7 +87,7 @@ public class Engine {
                 }
 
             }}
-        saveReverseIndex(invertedIndex);
+            saveReverseIndex(invertedIndex);
     }
 
     public void saveReverseIndex(HashMap<Integer, HashMap<Integer,ArrayList<Integer>>> reverse) throws IOException {//Save Reverse Index into file
@@ -131,35 +133,35 @@ public class Engine {
         JSONObject json=new JSONObject();
         JSONArray ja1=new JSONArray();
 
-        BufferedWriter bw=new BufferedWriter(new FileWriter("ForwardIndex.json"));//True means it will not over write into file but write into existing
-        map.forEach((Key,Value)->{//Iterate through first HashMap
-            Value.forEach((Key1,Value1)->{//Iterates through the hashMap that is inside the hashmap
+            BufferedWriter bw=new BufferedWriter(new FileWriter("ForwardIndex.json"));//True means it will not over write into file but write into existing
+            map.forEach((Key,Value)->{//Iterate through first HashMap
+                Value.forEach((Key1,Value1)->{//Iterates through the hashMap that is inside the hashmap
 
-                Map m=new LinkedHashMap(2);
-                m.put(Key1,Value1);
-                ja1.add(m);
+                    Map m=new LinkedHashMap(2);
+                    m.put(Key1,Value1);
+                    ja1.add(m);
 
+                });
+                json.put(Key,ja1);
+                try {
+                    bw.write(json.toJSONString());
+                    bw.flush();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                json.clear();
+                ja1.clear();
             });
-            json.put(Key,ja1);
-            try {
-                bw.write(json.toJSONString());
-                bw.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            json.clear();
-            ja1.clear();
-        });
-    }
+        }
 
     public void saveDocID(HashMap<Integer,File> docsID) throws IOException {//Write DOCID into DocId.json
-        BufferedWriter bw= new BufferedWriter(new FileWriter("DocID.json"));
-        JSONObject obj=new JSONObject();
-        docsID.forEach((Key,Value)->{
-            obj.put(Key,Value);
-        });
-        bw.write(obj.toJSONString());
-        bw.flush();
+            BufferedWriter bw= new BufferedWriter(new FileWriter("DocID.json"));
+            JSONObject obj=new JSONObject();
+            docsID.forEach((Key,Value)->{
+                obj.put(Key,Value);
+            });
+            bw.write(obj.toJSONString());
+            bw.flush();
     }
     public void saveWordID(HashMap<String,Integer> wordID) throws IOException{//Write WORDID into lexicons.json
         BufferedWriter bw= new BufferedWriter(new FileWriter("Lexicons.json"));
