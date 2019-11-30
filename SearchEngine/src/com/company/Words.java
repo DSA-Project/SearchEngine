@@ -1,24 +1,38 @@
-package com.company;
-
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Words {
-    HashMap<String,Integer> wordList=new HashMap<>();//HashMap for Word,Count
-    int frequency;
+
+    private HashMap<Integer, ArrayList<Integer>> wordList=new HashMap<Integer, ArrayList<Integer>>();//HashMap for Word,Count
+private int frequency;
+    int position=0;
+    ArrayList<Integer> list=new ArrayList<Integer>();
     Words(){
         this.frequency=1;
     }
-    public void setHash(String words){
 
+    public void setHash(Integer words){
 
-        if(!wordList.containsKey(words)){//If hashmap doesn't contain word , it will add into hashmap
-            wordList.put(words,frequency);
+        position++;
+        if(!wordList.containsKey(words))//If hashmap doesn't contain word , it will add into hashmap
+        {
+            frequency=1;
+            list=new ArrayList<Integer>();
+            list.add(position);
+            list.add(0,frequency);
+            wordList.put(words,list);
         }
-        else{
-            wordList.put(words,wordList.get(words)+1);//If hashmap already contains then it will simply increment the frequency
+        else
+        {
+
+           list=wordList.get(words);
+           frequency=list.get(0);
+           list.add(position);
+            list.set(0,++frequency);
+            wordList.put(words,list);//If hashmap already contains then it will simply increment the frequency
         }
     }
-    public HashMap<String,Integer> getHash(){//Returns the hashmap
+    public HashMap<Integer, ArrayList<Integer>> getHash(){//Returns the hashmap
         return wordList;
     }
 
