@@ -1,3 +1,5 @@
+package com.company;
+
 import opennlp.tools.stemmer.PorterStemmer;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -26,7 +28,7 @@ public class Engine {
         try {
             file = new File(Path);//All the files on the path
             File subDir[] = file.listFiles();//Lists them
-            for (int s = 0; s <1; s++) {//For All the files in all three directories
+            for (int s = 0; s <subDir.length; s++) {//For All the files in all three directories
                 File[] blogs = subDir[s].listFiles();//All the blog files in each of the directory
                 for (File g : blogs) {//Iterates through
                     docID.put(docIndex,g);          //assign new docIndex to all the files in each directory
@@ -87,7 +89,7 @@ public class Engine {
         JSONObject json=new JSONObject();
         JSONArray ja1=new JSONArray();
 
-        BufferedWriter bw=new BufferedWriter(new FileWriter("D:/ReverseIndex.json"));//True means it will not over write into file but write into existing
+        BufferedWriter bw=new BufferedWriter(new FileWriter("ReverseIndex.json"));//True means it will not over write into file but write into existing
         reverse.forEach((Key,Value)->{//Iterate through first HashMap
             Value.forEach((Key1,Value1)->{//Iterates through the hashMap that is inside the hashmap
 
@@ -126,7 +128,7 @@ public class Engine {
     public void saveForwardIndex(HashMap<Integer, HashMap<Integer, ArrayList<Integer>>> map) throws IOException{//Save forwardIndex HashMap into File.
         JSONObject json=new JSONObject();
         JSONArray ja1=new JSONArray();
-        BufferedWriter bw=new BufferedWriter(new FileWriter("D:/ForwardIndex.json"));//True means it will not over write into file but write into existing
+        BufferedWriter bw=new BufferedWriter(new FileWriter("ForwardIndex.json"));//True means it will not over write into file but write into existing
         map.forEach((Key,Value)->{//Iterate through first HashMap
             Value.forEach((Key1,Value1)->{//Iterates through the hashMap that is inside the hashmap
                 Map m=new LinkedHashMap(2);
@@ -148,7 +150,7 @@ public class Engine {
     }
 
     public void saveDocID(HashMap<Integer,File> docsID) throws IOException {//Write DOCID into DocId.json
-        BufferedWriter bw= new BufferedWriter(new FileWriter("D:/DocID.json"));
+        BufferedWriter bw= new BufferedWriter(new FileWriter("DocID.json"));
         JSONObject obj=new JSONObject();
         docsID.forEach((Key,Value)->{
             obj.put(Key,Value);     //assigns unique ID to each document
@@ -157,7 +159,7 @@ public class Engine {
         bw.flush();
     }
     public void saveWordID(HashMap<String,Integer> wordID) throws IOException{//Write WORDID into lexicons.json
-        BufferedWriter bw= new BufferedWriter(new FileWriter("D:/Lexicons.json"));  //lexicon
+        BufferedWriter bw= new BufferedWriter(new FileWriter("Lexicons.json"));  //lexicon
         JSONObject obj=new JSONObject();
         wordID.forEach((Key,Value)->{
             obj.put(Key,Value);   //saving word as key and its ID in json object
