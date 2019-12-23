@@ -18,10 +18,9 @@ public class Searching {
     public void readLexicon() {
 
         try {
-            File file=new File("D:\\SearchEngineM\\Lexicons.json");
-            wordID = om.readValue(file, HashMap.class);
+            JSONObject obj = (JSONObject) parser.parse(new FileReader("D:\\SearchEngineM\\Lexicons.json"));
+            wordID=om.readValue(String.valueOf(obj),new TypeReference<HashMap<String, Integer>>(){});
             System.out.println("Lexicon hashmap created!");
-
 
         }
         catch(Exception e){
@@ -33,19 +32,17 @@ public class Searching {
     public void readInvertedIndex() {
 
         try {
-            File file=new File("D:\\SearchEngineM\\reverseIndex.json");
-            invertedIndex = om.readValue(file, HashMap.class);
+
+            JSONObject obj = (JSONObject) parser.parse(new FileReader("D:\\SearchEngineM\\reverseIndex.json"));
+            invertedIndex=om.readValue(String.valueOf(obj),new TypeReference<HashMap<Integer,HashMap<Integer, ArrayList<Integer>>>>(){});
             System.out.println("Inverted Index hashmap created!");
-
-
         }
         catch(Exception e){
             e.printStackTrace();
         }
 
-    }
 
-    public Stack<Integer> sortByFrequency(HashMap<Integer, ArrayList<Integer>> h1)
+        public Stack<Integer> sortByFrequency(HashMap<Integer, ArrayList<Integer>> h1)
     {
         Stack<Integer> dispdoc = new Stack<>();//stack which displays documents in correct order (order of freq)
 
