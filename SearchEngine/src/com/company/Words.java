@@ -1,12 +1,9 @@
-
-package com.company;
-
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class Words {
-  
+
     private HashMap<Integer, ArrayList<Integer>> wordList=new HashMap<Integer, ArrayList<Integer>>();//HashMap for Word,Count
     private int frequency;
 
@@ -26,20 +23,22 @@ public class Words {
             list=new ArrayList<Integer>();
             list.add(position);
             list.add(0,frequency);
+            Collections.sort(list.subList(1,list.size()),Collections.reverseOrder());
             wordList.put(words,list);
         }
         else
         {
 
-           list=wordList.get(words);
-           frequency=list.get(0);
-           list.add(position);
+            list=wordList.get(words);
+            frequency=list.get(0);
+            list.add(position);
             list.set(0,++frequency);
+            Collections.sort(list.subList(1,list.size()),Collections.reverseOrder());
             wordList.put(words,list);//If hashmap already contains then it will simply increment the frequency
         }
     }
     public HashMap<Integer, ArrayList<Integer>> getHash(){//Returns the hashmap
 
-    return wordList;
-  }
+        return wordList;
+    }
 }
