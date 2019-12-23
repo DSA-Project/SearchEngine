@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="389.0" layoutX="6.0" layoutY="6.0" strokeType="INSIDE" strokeWidth="5.0" width="588.0">
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.5523809523809524" startY="0.33809523809523806">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke>
+         <fill>
+            <LinearGradient endX="0.4666666666666667" endY="1.0" startX="0.42857142857142855">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Desktop/water-journal-p1J-Y7NrAZ0-unsplash.jpg" />
+         </image>
+      </ImageView>
+      <TextField disable="true" layoutX="165.0" layoutY="254.0" prefHeight="25.0" prefWidth="306.0" text="Shadow">
+         <effect>
+            <Shadow />
+         </effect></TextField>
+      <ImageView fitHeight="75.0" fitWidth="74.0" layoutX="263.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Desktop/DSA.png" />
+         </image>
+      </ImageView>
+      <TextField disable="true" layoutX="287.0" layoutY="317.0" prefHeight="25.0" prefWidth="52.0" text="Shadow">
+         <effect>
+            <Shadow />
+         </effect>
+      </TextField>
+      <TextField layoutX="156.0" layoutY="241.0" prefHeight="25.0" prefWidth="306.0" text="Search Aura" />
+      <Button layoutX="278.0" layoutY="304.0" mnemonicParsing="false" text="Search" />
+      <Label layoutX="219.0" layoutY="155.0" prefHeight="60.0" prefWidth="163.0" text="AURA" textFill="#fcfafa">
+         <font>
+            <Font name="Clarendon Blk BT Black" size="53.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
