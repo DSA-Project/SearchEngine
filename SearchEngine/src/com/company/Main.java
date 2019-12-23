@@ -1,28 +1,31 @@
-package com.company;
+
+import org.json.simple.parser.ParseException;
+
 import java.io.IOException;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ParseException {
+
 
         System.out.println("Begin");
-        Engine SearchEngine = new Engine("C:\Users\Tariq Farooq\Desktop\SEMESTER 3\Data Structures and Algorithms\PROJET FILS\\");//Add the path here
-        System.out.println("Creating Forward Indexing");
-        long start = System.currentTimeMillis();
-        SearchEngine.createForwardIndex();
-        long end = System.currentTimeMillis();
-        NumberFormat formatter = new DecimalFormat("#0.00000");
-        System.out.println("Execution time is " + formatter.format((end - start) / 1000d) + " seconds");
-        SearchEngine.createReverseIndex();
-        System.out.println("Creating Reverse Indexing");//Calling method
-        start = System.currentTimeMillis();
-        end = System.currentTimeMillis();
-        System.out.print("Execution time is " + formatter.format((end - start) / 1000d) + " seconds");
-        System.out.println("Ended");
+        //Engine SearchEngine=new Engine("D:\\SearchEngineM\\blogs");//Add the path here
+        //SearchEngine.createForwardIndex();//Calling method
+        //SearchEngine.createReverseIndex();//Calling method
+
+        //System.out.println("Ended");
+        long startTime = System.nanoTime();
+        Searching s=new Searching();
+        s.readLexicon();
+
+        s.readInvertedIndex();
+
+        s.oneWord("my");
+        //s.oneWord("that");
+        //s.twoWord("my","that");
+        long endTime   = System.nanoTime();
+        long totalTime = endTime - startTime;
+        System.out.println("Time: "+totalTime);
+        //System.out.println("Searching done!");
     }
 }
-
-
-
