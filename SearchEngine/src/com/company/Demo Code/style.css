@@ -1,0 +1,22 @@
+.root{
+ -fx-background-image:url("dsa.jpg");
+}
+.label{
+    -fx-font:100px Verdana;
+    -fx-text-fill:White;
+}
+.button{
+ -fx-background-color:
+         #c3c4c4,
+         linear-gradient(#d6d6d6 70%, white 80%),
+         radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+}
+.button:hover{
+       -fx-background-color:Black;
+}
+.button:pressed{
+    -fx-background-color:Grey;
+}
+.check-box{
+    -fx-text-fill:White;
+}

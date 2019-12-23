@@ -1,0 +1,12 @@
+.root{
+ -fx-background-image:url("dsa.jpg");
+}
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+.scroll-pane{
+    -fx-background-color:transparent;
+}
+.label{
+   -fx-text-fill:white;
+}
