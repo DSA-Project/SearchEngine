@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchResut">
+   <children>
+      <ScrollPane prefHeight="400.0" prefWidth="600.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="401.0" prefWidth="604.0">
+               <children>
+                  <Label layoutX="245.0" layoutY="6.0" prefHeight="31.0" prefWidth="86.0" text="AURA">
+                     <font>
+                        <Font name="Clarendon BT Bold" size="27.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="40.0" fitWidth="39.0" layoutX="199.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Desktop/DSA.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
